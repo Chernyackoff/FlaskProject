@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>{{Name}}</h1>
 <section>
     <div id="yacht" class="carousel slide" data-ride="carousel"
         style="width: 600px;">
@@ -31,26 +32,9 @@
 
     </div>
 </section>
-<br>
-<br>
-<br>
 <section>
-{% if admin %}
-    <a class="btn btn-primary" href="/add_news" role="button">Добавить Новость</a>
-{% endif %}
-{% if news %}
-{% for item in news %}
-    <div class="card">
-        <div class="card-header">
-            {{item.title}}
-        </div>
-        <div class="card-body">
-            <p class="card-text">{{item.description}}</p>
-            <a href="/news/item.id" class="btn btn-primary">Читать полностью</a>
-        </div>
-    </div>
-{% endfor %}
-{%endif%}
+    <p>
+        {{text}}
+    </p>
 </section>
 {% endblock %}
-

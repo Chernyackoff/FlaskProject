@@ -27,6 +27,9 @@ class News(db.Model):
     text = db.Column(db.String(100000000000), unique=False, nullable=False)
     description = db.Column(db.String(10000), unique=False, nullable=False)
 
+    def __repr__(self):
+        return '<News {}, {}, {}, {}>'.format(self.id, self.title, self.text, self.description)
+
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)

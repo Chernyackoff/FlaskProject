@@ -1,0 +1,20 @@
+{
+  "yachts":[
+    {
+      "name": "Green Marine",
+      "source": "green_marine.jpg",
+      "text": "Эта прекрасная яхта создана для спокойных круизов"
+    },
+    {
+      "name": "Garcia 85 Beniguet",
+      "source": "{{url_for('static', filename='Shop/garcia1.jpg')}}",
+      "text": "Яхта задумывалась как быстрый круизёр, поэтому парус имеет солидную площадь, но при этом судно легко управляется. "
+    },
+     {
+      "name": "Botin 65 HIGH SPIRIT",
+       "source": "{{url_for('static', filename='Shop/botin1.jpg')}}",
+      "text": "Парусная яхта  Botin 65 представляет собой уникальный симбиоз гоночной яхты с функциональным и вместе с тем стильно оформленным интерьером."
+    }
+  ]
+
+}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Green Marine</h5>
+          <img width="250" height="170" src="{{source1}}">
+        <p class="card-text">Эта прекрасная яхта создана для спокойных круизов</p>
+        <a href="/green_marine" class="btn btn-primary">Больше</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Garcia 85 Beniguet</h5>
+          <img width="250" height="170" src="{{source2}}">
+        <p class="card-text">Яхта задумывалась как быстрый круизёр, поэтому парус имеет солидную площадь, но при этом судно легко управляется. </p>
+        <a href="/garcia_85_beniguet" class="btn btn-primary">Больше</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Botin 65 HIGH SPIRIT</h5>
+          <img width="250" height="170" src="{{source3}}">
+        <p class="card-text">Парусная яхта  Botin 65 представляет собой уникальный симбиоз гоночной яхты с функциональным и вместе с тем стильно оформленным интерьером.</p>
+        <a href="/botin_65_high_spirit" class="btn btn-primary">Больше</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
