@@ -40,7 +40,7 @@ def login():
                            form=form)
 
 
-@app.route('/register')
+@app.route('/register', methods=["POST", "GET"])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -54,7 +54,7 @@ def register():
         except IntegrityError:
             return render_template('register.html', form=form,
                                    errors=['Another user with this email/username already exists!'])
-
+    return render_template('register.html', form=form)
 
 @app.errorhandler(404)
 def page_not_found(error):
