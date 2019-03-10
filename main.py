@@ -20,13 +20,20 @@ def forum():
     pass
 
 
-@app.route('/login')
+@app.route('/logout')
+def logout():
+    session.pop('username')
+    return redirect('/index')
+
+
+@app.route('/login', methods=[])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password_hash, form.password.data):
+                session['username'] = user.username
                 return redirect('/index')
             else:
                 return render_template('login.html',
@@ -49,8 +56,10 @@ def register():
                         email=form.email.data,
                         password_hash=generate_password_hash(form.password.data),
                         account_type=form.account_type.data)
+            session['username'] = user.username
             db.session.add(user)
             db.session.commit()
+            return redirect('/')
         except IntegrityError:
             return render_template('register.html', form=form,
                                    errors=['Another user with this email/username already exists!'])
