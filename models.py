@@ -1,9 +1,10 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
-app.secret_key= "P0werw0lf_vl@d"
+app.secret_key= generate_password_hash("P0werw0lf_vl@d")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///DB/Anchor.db'
 db = SQLAlchemy(app)
 
