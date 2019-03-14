@@ -9,7 +9,6 @@ Name = ""
 @app.route('/')
 def index():
     admin = False
-    print(News.query.all())
     logged = 'username' in session
     if logged:
         if User.query.filter_by(username=Name).first().account_type == 'dev':
@@ -21,10 +20,20 @@ def index():
                            img3=url_for('static', filename='Carousel/img3.jpg'))
 
 
+@app.route('/news/<id>')
+def news_page(id):
+    if News.query.get(id):
+        logged = 'username' in session
+        return render_template('news_page.html', source=url_for('static', filename='anchor.ico'), logged_in=logged,
+                               session=session, news=News.query.get(id))
+    else:
+        return redirect('/404')
+
+
 @app.route('/shop')
 def shop():
     logged = 'username' in session
-    with open("DB/yachts.json", "rt", encoding="utf8") as f:
+    with open("DB/yachts.json", "rt", encoding="utf-8") as f:
         yacht_list = json.loads(f.read())
 
     name = yacht_list["yachts"][0]["name"]
@@ -70,9 +79,24 @@ def boat2_page():
                            text=f.read())
 
 
-@app.route('/forum')
+@app.route('/forum', methods=["POST", "GET"])
 def forum():
-    pass
+    logged = 'username' in session
+    form = ComentForm()
+    if form.validate_on_submit():
+        try:
+            comment = Comment(text=form.text.data,
+                              user_id=User.query.filter_by(username=Name).first().id, )
+            db.session.add(comment)
+            db.session.commit()
+            return redirect('/forum')
+        except IntegrityError as error:
+            return render_template('forum.html', logged_in=logged, session=session, comments=Comment.query.all(),
+                                   form=form,
+                                   source=url_for('static', filename='anchor.ico'), errors=[error])
+    print(Comment.query.all())
+    return render_template('forum.html', logged_in=logged, session=session, comments=Comment.query.all(), form=form,
+                           source=url_for('static', filename='anchor.ico'))
 
 
 @app.route('/logout')

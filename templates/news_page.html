@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+{% if news %}
+    <h1>{{news.title}}</h1>
+    <p>{{news.text}}</p>
+{%endif%}
+</section>
+{% endblock %}

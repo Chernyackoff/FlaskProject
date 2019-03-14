@@ -22,3 +22,8 @@ class NewsForm(FlaskForm):
     text = TextAreaField('Text', [validators.required()])
     description = TextAreaField('Description', [validators.required()])
     submit = SubmitField('Add')
+
+
+class ComentForm(FlaskForm):
+    text = TextAreaField('Text', [validators.required()])
+    submit = SubmitField('Add')
